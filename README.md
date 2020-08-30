@@ -1,6 +1,6 @@
-# Palabos UC3M
+# MERLIN (uc3M EnviRonment for Lbm sImulatioNs)
 
-Palabos UC3M is a Python library for processing the Palabos simulations generated at the Experimental Aerodynamics and Propulsion Laboratory.
+MERLIN is a Python library developed at the Experimental Aerodynamics and Propulsion Laboratory of the Universidad Carlos III de MAdrid and used for processing simulations generated with Lattice Boltzmann Method.
 
 ## Installation
 
@@ -13,19 +13,31 @@ pip install -r requirements.txt
 ## Usage
 
 ```python
-from palabos_uc3m import Palabos_UC3M
+from merlin import MERLIN
 
-directory_input = /path/to/your/palabos/files
-directory_output = /path/to/stored/your/processed/files
+directory_input = "/path/to/your/palabos/files"
+directory_output = "/path/to/stored/your/processed/files"
+flow_type = "jet"
 
-postprocesser = Palabos_UC3M(
-    directory_input,
-    directory_output
+postprocesser = MERLIN(
+    flow_type
 )
 
 # Convert Palabos files into Matlab files
 
-postprocesser.generate_readable_files()
+postprocesser.generate_readable_files(  
+    delete_files=False, 
+    directory_input=directory_input, 
+    directory_output=directory_output, 
+    geometry='3D', 
+    method='nearest',
+    resolution_x=0.1, 
+    resolution_y=0.1, 
+    resolution_z=0.1,
+    save_mesh=True, 
+    save_data=True, 
+    save_data_type='matlab'
+)
 
 # Compute ststistics
 
