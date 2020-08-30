@@ -16,7 +16,7 @@ pip install -r requirements.txt
 from merlin import MERLIN
 
 directory_input = "/path/to/your/palabos/files"
-directory_output = "/path/to/stored/your/processed/files"
+directory_output = "/path/to/store/your/processed/files"
 flow_type = "jet"
 
 postprocesser = MERLIN(
